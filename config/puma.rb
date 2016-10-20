@@ -3,7 +3,7 @@
 # start puma with:
 # RAILS_ENV=production bundle exec puma -C ./config/puma.rb
 
-application_path = '/home/w3villa/ncrfurniture/current'
+application_path = '/home/w3villa/brunsch_b2b/current'
 railsenv = 'production'
 directory application_path
 environment railsenv
@@ -12,4 +12,4 @@ pidfile "#{application_path}/tmp/pids/puma-#{railsenv}.pid"
 state_path "#{application_path}/tmp/pids/puma-#{railsenv}.state"
 stdout_redirect "#{application_path}/log/puma-#{railsenv}.stdout.log", "#{application_path}/log/puma-#{railsenv}.stderr.log"
 threads 0, 16
-bind "unix:///tmp/ncrfurniture.sock"
+bind "unix:///tmp/brunsch_b2b.sock"

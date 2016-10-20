@@ -10,8 +10,8 @@ set :whenever_environment, defer { 'production' }
 
 
 # Application configuration
-set :application, 'ncrfurniture'
-set :repository,  'git@github.com:w3villa/ncrfurniture.git'
+set :application, 'brunsch_b2b'
+set :repository,  'git@github.com:cxkurland/brunsch_b2b.git'
 set :scm, :git
 
 # Server-side system wide settings

@@ -1,5 +1,5 @@
 # Settings for staging server
-server 'staging.simmpli.com', :app, :web, :db, :primary => true
+server 'ec2-54-93-84-126.eu-central-1.compute.amazonaws.com', :app, :web, :db, :primary => true
 set :rails_env, 'production'
 
 set :use_sudo, false
