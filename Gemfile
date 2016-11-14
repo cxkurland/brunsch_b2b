@@ -19,6 +19,7 @@ gem 'spree_gateway', '~> 3.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'progress_bar' 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
