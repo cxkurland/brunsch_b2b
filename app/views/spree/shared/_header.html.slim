@@ -1,0 +1,12 @@
+#spree-header
+  header#header data-hook="" style="background-color:#437F89;"
+    .container
+      .row
+        figure#logo.col-md-4.col-sm-3 data-hook="" 
+       		= image_tag 'logo/logo.png'
+  		h5 style="color: white;text-align: right;margin-bottom: 4%;"
+  			strong
+  				| Distributer of Life Sciences products, Chemical Reagents and Labware.
+        = render :partial => 'spree/shared/nav_bar' 
+  .container style="background-color: #5ABECE;width:100%;"
+    = render :partial => 'spree/shared/main_nav_bar' if store_menu? 
