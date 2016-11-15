@@ -15,10 +15,10 @@ module Spree
 	    			any_of do
 		    			params[:search][:price_range_any].each do |range|
 		    				if range.include?("or")
-		    					with(:price).greater_than(range.split(" or").first.gsub("$", "").to_f)
+		    					with(:price).greater_than(range.split(" or").first.gsub("CHF", "").to_f)
 		    				else
 			    				bound = range.split(" - ")
-			    				with(:price, bound.first.gsub("$", "").to_f..bound.last.gsub("$", "").to_f)
+			    				with(:price, bound.first.gsub("CHF", "").to_f..bound.last.gsub("CHF", "").to_f)
 			    			end
 		    			end
 		    		end

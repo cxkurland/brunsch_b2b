@@ -26,39 +26,49 @@
           <th>SKU</th>
           <th>Description</th>
           <th>Brand</th>
+          <th>Price</th>
           <th>Action</th>
         </tr>  
         </thead>
         <tbody>
         <% products.each do |product| %>
-          <tr>
-          <td>
-           <%= product.sku%> 
-          </td>
-          <td>
-            <%= product.description%>
-          </td>
-          <td>
-             <%= product.product_properties.where(property_id: Spree::Property.find_by_name("brand").try(:id)).first.try(:value) %>
-          </td>
-          <td> 
-            <div id="cart-form" data-hook="cart_form">
-            <%= form_for :order, :url => populate_orders_path do |f| %>
-              <div class="add-to-cart">
-                <div class="input-group">
-                  <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1,style: "width:50px" %>
-                  <%= hidden_field_tag "variant_id", product.master.id %>
-                  <span class="input-group-btn">
-                    <%= button_tag :class => 'btn btn-primary', :id => 'add-to-cart-button', :type => :submit do %>
-                    <%= Spree.t(:add_to_cart) %>
-                    <% end %>
-                  </span>
+          <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+          <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : cache_key_for_product(product)) do %>
+            <tr>
+            <td>
+             <%= link_to product.sku, url %> 
+            </td>
+            <td>
+              <%= product.name %>
+            </td>
+            
+            <td>
+               <%= product.product_properties.where(property_id: Spree::Property.find_by_name("brand").try(:id)).first.try(:value) %>
+            </td>
+            <td>
+              <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <span class="" itemprop="price"><%= display_price(product) %></span>
+              </span>
+            </td>
+            <td style="width: 168px;"> 
+              <div id="cart-form" data-hook="cart_form">
+              <%= form_for :order, :url => populate_orders_path do |f| %>
+                <div class="add-to-cart">
+                  <div class="input-group">
+                    <%= number_field_tag :quantity, 1, :class => 'title form-control', :min => 1,style: "width:50px" %>
+                    <%= hidden_field_tag "variant_id", product.master.id %>
+                    <span class="input-group-btn">
+                      <%= button_tag :class => 'btn btn-primary', :id => 'add-to-cart-button', :type => :submit do %>
+                      <%= Spree.t(:add_to_cart) %>
+                      <% end %>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            <%end%>
-            </div> 
-          </td>  
-          </tr>
+              <%end%>
+              </div> 
+            </td>  
+            </tr>
+          <%end%>
         <%end%> 
         </tbody>
       </table>

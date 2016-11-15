@@ -4,13 +4,7 @@ module Spree
     def index
       @searcher = build_searcher(params.merge(include_images: true))
       @taxonomies = Spree::Taxonomy.includes(root: :children)
-      # @products = @searcher.retrieve_products.includes(:possible_promotions)
-
-
-
-
-
-       @search = Sunspot.search(Spree::Product) do
+      @search = Sunspot.search(Spree::Product) do
 	    	paginate(:page => params[:page] || 1, :per_page => Spree::Config[:products_per_page])
 	    	unless params[:keywords].blank?
 	    		any do
@@ -23,7 +17,6 @@ module Spree
 	    	end
 	    end
 	    @products = @search.results
-	  
    end
   end
 end
