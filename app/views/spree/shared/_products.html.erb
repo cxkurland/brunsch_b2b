@@ -28,10 +28,10 @@
       <%= form_tag '' , :id => "formpage" , :method => 'get' do %>
         
         <select id="per_page_select" class="form-control" name="per_page">
-          <option  value="15">15</option>
-          <option  value="30">30</option>
-          <option  value="45">45</option>
-          <option  value="60">60</option> 
+          <option value="15" selected="params[:per_page] == '15'">15</option>
+          <option value="30" selected="params[:per_page] == '30'">30</option>
+          <option value="45" selected="params[:per_page] == '45'">45</option>
+          <option value="60" selected="params[:per_page] == '60'">60</option> 
         </select>
       <% end %>
       </div>

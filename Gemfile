@@ -20,6 +20,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar' 
+gem 'whenever', :require => false
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
