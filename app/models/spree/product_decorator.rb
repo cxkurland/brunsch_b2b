@@ -5,6 +5,7 @@ module Spree
     searchable do
       text :name
       text :description
+      text :sku
 
       float :price
 
