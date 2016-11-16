@@ -18,8 +18,36 @@
 
 <% if products.any? %>
   <div id="products" class="row" data-hook>
-    <h2><%= "#{@search.total}" %> Products</h2>
+    <div class="row">
+    <h2 style="float:left;margin-left:2%;"><%= "#{@search.total}" %> Products</h2>
+    
+    <div class="col-sm-6" style="margin-top:2%;float:right;">  
+      <label class="col-md-4">Item per page:</label>
+      <div class="col-sm-4">
+      
+      <%= form_tag '' , :id => "formpage" , :method => 'get' do %>
+        
+        <select id="per_page_select" class="form-control" name="per_page">
+          <option  value="15">15</option>
+          <option  value="30">30</option>
+          <option  value="45">45</option>
+          <option  value="60">60</option> 
+        </select>
+      <% end %>
+      </div>
+      <div class="col-sm-4">
+      <label>Anzeige: </label>
+      <a href="?view=grid"> 
+        <i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>
+      </a> 
+       <a href="?view=list"> 
+        <i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+      </a> 
+      </div>
+    </div>  
+    </div>
 
+    <% if !params[:view] || params[:view] == 'list'%>
       <table class="table table-bordered">
         <thead>
         <tr>
@@ -72,11 +100,9 @@
         <%end%> 
         </tbody>
       </table>
+    
+    <% elsif params[:view] == 'grid'  %>  
     <% products.each do |product| %>
-
-
-
-<!-- 
       <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
       <div id="product_<%= product.id %>" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
         <div class="panel panel-default">
@@ -98,7 +124,8 @@
       </div>
     <% end %>
     <% reset_cycle("classes") %>
- -->  </div>
+    <% end %>
+ </div>
 <% end %>
 
 <% if products.respond_to?(:total_pages) %>

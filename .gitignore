@@ -29,6 +29,10 @@
 /solr/default/data/*
 /solr/pids/*
 
+.gitignore
+/config/secrets.yml
+
+>>>>>>> 7e0bcc3227b6c1b9d357a6cdd57a409e9b182e51
 .idea/*
 .idea
 
