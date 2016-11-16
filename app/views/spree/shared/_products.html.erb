@@ -27,6 +27,7 @@
       
       <%= form_tag '' , :id => "formpage" , :method => 'get' do %>
         <%= select_tag "per_page", options_for_select([15, 30, 45, 60], params[:per_page]), class: "form-control", id: "per_page_select" %>
+        <%= hidden_field_tag :view, params[:view] %>
       <% end %>
       </div>
       <div class="col-sm-4">
@@ -41,7 +42,7 @@
     </div>  
     </div>
 
-    <% if !params[:view] || params[:view] == 'list'%>
+    <% if params[:view].blank? || params[:view] == 'list'%>
       <table class="table table-bordered">
         <thead>
         <tr>
