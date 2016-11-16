@@ -26,13 +26,7 @@
       <div class="col-sm-4">
       
       <%= form_tag '' , :id => "formpage" , :method => 'get' do %>
-        
-        <select id="per_page_select" class="form-control" name="per_page">
-          <option value="15" selected="params[:per_page] == '15'">15</option>
-          <option value="30" selected="params[:per_page] == '30'">30</option>
-          <option value="45" selected="params[:per_page] == '45'">45</option>
-          <option value="60" selected="params[:per_page] == '60'">60</option> 
-        </select>
+        <% select_tag "per_page", options_for_select([15, 30, 45, 60], params[:per_page]), class: "form-control", id: "per_page_select" %>
       <% end %>
       </div>
       <div class="col-sm-4">
