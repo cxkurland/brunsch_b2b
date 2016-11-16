@@ -8,7 +8,7 @@ module Spree
 	    @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
 	    taxon_ids = [@taxon.id]
 	    @search = Sunspot.search(Spree::Product) do
-	    	paginate(:page => params[:page] || 1, :per_page => Spree::Config[:products_per_page])
+	    	paginate(:page => params[:page] || 1, :per_page => params[:per_page] ? params[:per_page] : Spree::Config[:products_per_page])
 	    	with(:taxon_ids, taxon_ids)
 	    	if params[:search]
 	    		if params[:search][:price_range_any]
